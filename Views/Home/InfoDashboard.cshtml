@@ -1,0 +1,263 @@
+﻿@model IEnumerable<RegistrationWeb.Models.TraineeModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>لوحة التحكم</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/adminlte.css">
+    <!-- Bootstrap 4 RTL -->
+  <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+  <!-- Custom style for RTL -->
+  <link rel="stylesheet" href="../dist/css/custom.css">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="" class="brand-link">
+                <img src="logo.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">لوحة التحكم</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user (optional) -->
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                             with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="InfoDashboard" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    بيانات المتدربين
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="ReportsDashboard" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    التقييمات
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>بيانات المتدربين</h1>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">جدول عرض بيانات المتدربين</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>الاسم</th>
+                                                <th>رقم الهوية</th>
+                                                <th>البرنامج التدريبي</th>
+                                                <th>رقم الجوال</th>
+                                                <th>حالة القبول</th>
+                                                <th>الإجراءات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                try
+                                                {
+                                                    if(Model != null ) {
+                                                                @foreach (var item in Model)
+                                                    {
+                                                                    <tr>
+                                                                        <td>@item.FirstName</td>
+                                                                        <td>@item.NationalID</td>
+                                                                        <td>@item.Track</td>
+                                                                        <td>@item.PhoneNumber</td>
+                                                                        @if (@ViewData["Role"] != null)
+                                                                {
+                                                                    @if (@ViewData["Role"].Equals("Admin"))
+                                                                    {
+                                                                        <td>
+                                                                            <div class="btn-group">
+                                                                                <!-- dropdown menu dose not open even in the first sent version-->
+                                                                                <button type="button" class="btn btn-success">@item.Status</button>
+                                                                                <!-- i'm not fimiller with this way to make dropdown lists, thus, i need you to put the value of the selected option in the changestat call bellow this comment-->
+                                                                                <button id ="status" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" onChange="changestat('','@item.NationalID')">
+                                                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                                                </button>
+                                                                                <div class="dropdown-menu" role="menu">
+                                                                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="changeStatus" asp-route-traineeID="@item.NationalID" asp-route-status="غير مقبول">غير مقبول</a>
+                                                                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="changeStatus" asp-route-traineeID="@item.NationalID" asp-route-status="قبول مبدئي">قبول مبدئي</a>
+                                                                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="changeStatus" asp-route-traineeID="@item.NationalID" asp-route-status="مقبول">مقبول</a>
+                                                                                </div>
+                                                                        </td>
+                                                                    }
+
+                                                                    else
+                                                                    {
+                                                                        <td>@item.Status</td>
+                                                                    }
+                                                                }
+                                                            <td><a type="button" class="btn btn-block btn-primary" asp-area="" asp-controller="Home" asp-action="Infoform" asp-route-trainee="@item.NationalID">عرض</a></td>
+                                                                    </tr>
+                                                    }
+                                                    }
+                                                }
+                                                catch (Exception e)
+                                                {
+
+                                                }
+                                            }
+
+                                        </tbody>
+                                        <tfoot>
+
+                                            <tr>
+                                                <th>الاسم</th>
+                                                <th>رقم الهوية</th>
+                                                <th>البرنامج التدريبي</th>
+                                                <th>رقم الجوال</th>
+                                                <th>حالة القبول</th>
+                                                <th>الإجراءات</th>
+                                            </tr>
+
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 1
+            </div>
+            <strong>Copyright &copy; 2022 <a href="">جميع الحقوق محفوظة</a>.</strong>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../plugins/jszip/jszip.min.js"></script>
+    <script src="../plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["excel", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+        function changestat(stat, id){
+            $.post("/Home/changeStatus", { status: stat, traineeID: id}, function (data) {
+                alert(data);
+            });
+
+        }
+    </script>
+</body>
+</html>
+
+<style>
+
+    .card-title {
+        float: right;
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin: 0;
+    }
+</style>

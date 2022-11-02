@@ -1,0 +1,406 @@
+﻿@model RegistrationWeb.Models.TraineeModel
+
+@{
+    Layout = null;
+}
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>لوحة التحكم</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.css">
+    <!-- Bootstrap 4 RTL -->
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <!-- Custom style for RTL -->
+    <link rel="stylesheet" href="../dist/css/custom.css">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="" class="brand-link">
+                <img src="logo.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">لوحة التحكم</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user (optional) -->
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                             with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="InfoDashboard" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    بيانات المتدربين
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="ReportsDashboard" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    التقييمات
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+
+
+
+                            <!-- general form elements -->
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">بيانات المتدريب</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <div class="form-group col-3">
+                                            <label >الاسم الأول</label>
+                                            <input disable  value="@Model.FirstName" class="form-control form-control-border">
+                               
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >الاسم الأخير</label>
+                                            <input disable  value="@Model.LastName" class="form-control form-control-border">
+                                            
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >البريد الإلكتروني</label>
+                                            <input disable  value="@Model.Email" class="form-control form-control-border">
+                            
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >الجوال</label>
+                                            <input disable  value="@Model.PhoneNumber" class="form-control form-control-border">
+                                    
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >الجنسية</label>
+                                            <select disable  value="@Model.Nationality" class="form-control form-control-border">
+                                                <option value="السعودية">السعودية</option>
+                                                <option value="الكويت">الكويت</option>
+                                                <option value="البحرين">البحرين</option>
+                                                <option value="الإمارات العربية">الإمارات العربية</option>
+                                                <option value="سلطنة عمان">سلطنة عمان</option>
+                                                <option value="قطر">قطر</option>
+                                                <option value="العراق">العراق</option>
+                                                <option value="سوريا">سوريا</option>
+                                                <option value="لبنان">لبنان</option>
+                                                <option value="الأردن">الأردن</option>
+                                                <option value="اليمن">اليمن</option>
+                                                <option value="فلسطين">فلسطين</option>
+                                                <option value="الجزائر">الجزائر</option>
+                                                <option value="موريتانيا">موريتانيا</option>
+                                                <option value="مصر">مصر</option>
+                                                <option value="المغرب">المغرب</option>
+                                                <option value="السودان">السودان</option>
+                                                <option value="تونس">تونس</option>
+                                                <option value="ليبيا">ليبيا</option>
+                                                <option value="الصومال">الصومال</option>
+                                                <option value="جيبوتي">جيبوتي</option>
+                                                <option value="جزر القمر">جزر القمر</option>
+                                                <option value="أفغانستان">أفغانستان</option>
+                                                <option value="تركيا">تركيا</option>
+                                                <option value="إيران">إيران</option>
+                                                <option value="ماليزيا">ماليزيا</option>
+                                                <option value="اليابان">اليابان</option>
+                                                <option value="أندونيسيا">أندونيسيا</option>
+                                                <option value="الفلبين">الفلبين</option>
+                                                <option value="باكستان">باكستان</option>
+                                                <option value="الهند">الهند</option>
+                                                <option value="الصين الوطنية">الصين الوطنية</option>
+                                                <option value="كوريا الجنوبية">كوريا الجنوبية</option>
+                                                <option value="سنغافورا">سنغافورا</option>
+                                                <option value="بنجلاديش">بنجلاديش</option>
+                                                <option value="هونج كونج">هونج كونج</option>
+                                                <option value="تايلاند">تايلاند</option>
+                                                <option value="سيرلنكا (سيلان">سيرلنكا (سيلان)</option>
+                                                <option value="بريطانيا">بريطانيا</option>
+                                                <option value="فرنسا">فرنسا</option>
+                                                <option value="هولندا">هولندا</option>
+                                                <option value="بلجيكا">بلجيكا</option>
+                                                <option value="إيطاليا">إيطاليا</option>
+                                                <option value="السويد">السويد</option>
+                                                <option value="النرويج">النرويج</option>
+                                                <option value="سويسرا">سويسرا</option>
+                                                <option value="النمسا">النمسا</option>
+                                                <option value="المانيا">المانيا</option>
+                                                <option value="إسبانيا">إسبانيا</option>
+                                                <option value="الدنمارك">الدنمارك</option>
+                                                <option value="اليونان">اليونان</option>
+                                                <option value="قبرص">قبرص</option>
+                                                <option value="فنلندا">فنلندا</option>
+                                                <option value="إثوبيا">إثوبيا</option>
+                                                <option value="مالي">مالي</option>
+                                                <option value="نيجيريا">نيجيريا</option>
+                                                <option value="جنوب أفريقيا">جنوب أفريقيا</option>
+                                                <option value="تشاد">تشاد</option>
+                                                <option value="جنسيات أفريقية أخرى">جنسيات أفريقية أخرى</option>
+                                                <option value="المجموع">المجموع</option>
+                                                <option value="الولايات المتحدة">الولايات المتحدة</option>
+                                                <option value="كندا">كندا</option>
+                                                <option value="استرليا">استرليا</option>
+                                            </select>
+                                         
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >رقم الهوية</label>
+                                            <input disable  value="@Model.NationalID" class="form-control form-control-border">
+                                          
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >تاريخ الميلاد</label>
+                                            <input disable type="date" placeholder="MM/DD/YYYY"  value="@Model.DateOfBirth" class="form-control form-control-border">
+                                           
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >الجنس</label>
+                                            <select disable  value="@Model.Gender" class="form-control form-control-border">
+                                                <option value="ذكر">ذكر</option>
+                                                <option value="أنثى">أنثى</option>
+                                            </select>
+                                          
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >المنطقة</label>
+                                            <select disable  value="@Model.Region" class="form-control form-control-border">
+                                                <option value="الرياض">الرياض</option>
+                                                <option value="مكـة المكرمة">مكـة المكرمة</option>
+                                                <option value="المدينة المنورة">المدينة المنورة</option>
+                                                <option value="القصيم">القصيم</option>
+                                                <option value="المنطقة الشرقية">المنطقة الشرقية</option>
+                                                <option value="عسير">عسير</option>
+                                                <option value="تبــوك">تبــوك</option>
+                                                <option value="حائل">حائل</option>
+                                                <option value="الحدود الشمالية">الحدود الشمالية</option>
+                                                <option value="جازان">جازان</option>
+                                                <option value="نجران">نجران</option>
+                                                <option value="الباحة">الباحة</option>
+                                                <option value="الجـوف">الجـوف</option>
+                                            </select>
+                                           
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >مدينة الإقامة</label>
+                                            <input disable   value="@Model.City" class="form-control form-control-border">
+                                         
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >المؤهل العلمي</label>
+                                            <select disable  value="@Model.Degree" class="form-control form-control-border">
+                                                <option value="بكالوريس">بكالوريس</option>
+                                                <option value="ماجستير">ماجستير</option>
+                                            </select>
+                                       
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >التخصص</label>
+                                            <input disable  value="@Model.Major" class="form-control form-control-border">
+                                         
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >نوع المعدل</label>
+                                            <input disable  value="@Model.GPAScale" class="form-control form-control-border">
+                                         
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >المعدل</label>
+                                            <input disable  value="@Model.GPA" class="form-control form-control-border">
+                                         
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >الجامعة</label>
+                                            <input disable  value="@Model.University" class="form-control form-control-border">
+                                         
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >سنة التخرج</label>
+                                            <input disable type="date" placeholder="YYYY"  value="@Model.GraduationYear" class="form-control form-control-border">
+                                        
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >الحالة الوظيفية</label>
+                                            <select disable  value="@Model.EmployeeStatus" class="form-control form-control-border">
+                                                <option value="موظف">موظف</option>
+                                                <option value="غير موظف">غير موظف</option>
+                                            </select>
+                                          
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >سنوات الخبرة</label>
+                                            <input disable  value="@Model.ExpYears" class="form-control form-control-border">
+                                         
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >مستوى اللغة الإنجليزية</label>
+                                            <select disable  value="@Model.EnglishLevel" class="form-control form-control-border">
+                                                <option value="متوسط">متوسط</option>
+                                                <option value="متقدم">متقدم</option>
+                                            </select>
+                                         
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >سبب التقديم على المبادرة</label>
+                                            <input disable  value="@Model.RegistrationReason" class="form-control form-control-border">
+                                          
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <label >متفرغ</label>
+                                            <select disable  value="@Model.FreementStaus" class="form-control form-control-border">
+                                                <option value="نعم">نعم</option>
+                                                <option value="لا">لا</option>
+                                            </select>
+                                          
+                                        </div>
+                                        <input disable  value="@Model.Status" class="form-control form-control-border" style="display: none;">
+
+
+
+                                        <div class="form-group col-3">
+                                            <a type="button" class="btn btn-block btn-primary" asp-area="" asp-controller="Home" asp-action="OpenFile" asp-route-TraineeID="@Model.NationalID" asp-route-filetype="CV">عرض السيرة الذاتية</a>
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <a type="button" class="btn btn-block btn-primary" asp-area="" asp-controller="Home" asp-action="OpenFile" asp-route-TraineeID="@Model.NationalID" asp-route-filetype="Certificate">عرض الشهادة </a>
+
+                                        </div>
+                                        <div class="form-group col-3">
+                                            <<a type="button" class="btn btn-block btn-primary" asp-area="" asp-controller="Home" asp-action="OpenFile" asp-route-TraineeID="@Model.NationalID" asp-route-filetype="IntroVideo">عرض الفيديو التعريفي </a>
+
+                                        </div>
+                                        <div class="form-group col-3">
+                                           <a type="button" class="btn btn-block btn-primary" asp-area="" asp-controller="Home" asp-action="OpenFile" asp-route-TraineeID="@Model.NationalID" asp-route-filetype="PreviosWork">عرض المشاريع السابقة</a>
+                                        </div>
+
+
+                                    </div> <div class="card-footer">
+                                        <a asp-area="" asp-controller="Home" asp-action="InfoDashboard" class="btn btn-primary">عودة</a>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+
+                            </div>
+                            <!-- /.card -->
+
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 1
+            </div>
+            <strong>Copyright &copy; 2022 <a href="">جميع الحقوق محفوظة</a>.</strong>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["excel", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+</body>
+</html>
+
+<style>
+
+    .card-title {
+        float: right;
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    code, kbd, pre, samp {
+        font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+        font-size: 1em;
+        direction: ltr;
+        unicode-bidi: embed;
+    }
+</style>

@@ -1,0 +1,261 @@
+@model RegistrationWeb.Models.TraineeModel
+
+<html style="font-size: 16px;" lang="ar-SA" dir="rtl">
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="تسجيل">
+    <meta name="description" content="">
+    <title>registration</title>
+
+    <link rel="stylesheet" href="../dist\css\style-r.css" media="screen">
+    <link rel="stylesheet" href="../dist\css\registration-r.css" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
+   
+  
+    <script class="u-script" type="text/javascript" src="../dist/js/style-r.js"></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <meta name="theme-color" content="#0f1463">
+    <meta property="og:title" content="registration">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-stick-footer u-xl-mode" data-lang="ar"><header class="u-clearfix u-header u-palette-1-base u-header" id="sec-h"><div class="u-clearfix u-sheet u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+        <img class="u-image u-image-contain u-image-default u-image-1" src="../images/logo-e.webp" alt="" data-image-width="1588" data-image-height="264">
+        <a href="/" class="u-active-white u-border-none u-btn u-button-style u-hidden-sm u-hidden-xs u-hover-palette-1-light-2 u-white u-btn-1">الرئيسية</a>
+      </div></header> 
+    <section class="u-align-center u-clearfix u-image u-parallax u-section-1" id="sec-1" data-image-width="2522" data-image-height="1193">
+      <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+        <h1 class="u-text u-text-default u-text-1">تسجيل</h1>
+      </div>
+    </section>
+    <section class="u-align-center u-clearfix u-section-2" id="sec-3">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-form u-form-1">
+        <form asp-action="File" method="post" enctype="multipart/form-data">
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="FirstName" class="u-label">الاسم الأول</label>
+                <input asp-for="FirstName" class="u-border-1 u-border-grey-30 u-input u-input-rectangle">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="LastName" class="u-label">الاسم الأخير</label>
+                <input asp-for="LastName" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="Email" class="u-label">البريد الإلكتروني</label>
+                <input asp-for="Email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="PhoneNumber" class="u-label">الجوال</label>
+                <input asp-for="PhoneNumber" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="Nationality" class="u-label">الجنسية</label>
+                <select asp-for="Nationality" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+				<option value="السعودية">السعودية</option><option value="الكويت">الكويت</option><option value="البحرين">البحرين</option><option value="الإمارات العربية">الإمارات العربية</option><option value="سلطنة عمان">سلطنة عمان</option><option value="قطر">قطر</option><option value="العراق">العراق</option><option value="سوريا">سوريا</option><option value="لبنان">لبنان</option><option value="الأردن">الأردن</option><option value="اليمن">اليمن</option><option value="فلسطين">فلسطين</option><option value="الجزائر">الجزائر</option><option value="موريتانيا">موريتانيا</option><option value="مصر">مصر</option><option value="المغرب">المغرب</option><option value="السودان">السودان</option><option value="تونس">تونس</option><option value="ليبيا">ليبيا</option><option value="الصومال">الصومال</option><option value="جيبوتي">جيبوتي</option><option value="جزر القمر">جزر القمر</option><option value="أفغانستان">أفغانستان</option><option value="تركيا">تركيا</option><option value="إيران">إيران</option><option value="ماليزيا">ماليزيا</option><option value="اليابان">اليابان</option><option value="أندونيسيا">أندونيسيا</option><option value="الفلبين">الفلبين</option><option value="باكستان">باكستان</option><option value="الهند">الهند</option><option value="الصين الوطنية">الصين الوطنية</option><option value="كوريا الجنوبية">كوريا الجنوبية</option><option value="سنغافورا">سنغافورا</option><option value="بنجلاديش">بنجلاديش</option><option value="هونج كونج">هونج كونج</option><option value="تايلاند">تايلاند</option><option value="سيرلنكا (سيلان)">سيرلنكا (سيلان)</option><option value="بريطانيا">بريطانيا</option><option value="فرنسا">فرنسا</option><option value="هولندا">هولندا</option><option value="بلجيكا">بلجيكا</option><option value="إيطاليا">إيطاليا</option><option value="السويد">السويد</option><option value="النرويج">النرويج</option><option value="سويسرا">سويسرا</option><option value="النمسا">النمسا</option><option value="المانيا">المانيا</option><option value="إسبانيا">إسبانيا</option><option value="الدنمارك">الدنمارك</option><option value="اليونان">اليونان</option><option value="قبرص">قبرص</option><option value="فنلندا">فنلندا</option><option value="إثوبيا">إثوبيا</option><option value="مالي">مالي</option><option value="نيجيريا">نيجيريا</option><option value="جنوب أفريقيا">جنوب أفريقيا</option><option value="تشاد">تشاد</option><option value="جنسيات أفريقية أخرى">جنسيات أفريقية أخرى</option><option value="المجموع">المجموع</option><option value="الولايات المتحدة">الولايات المتحدة</option><option value="كندا">كندا</option><option value="استرليا">استرليا</option>
+				</select>
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="NationalID" class="u-label">رقم الهوية</label>
+                <input asp-for="NationalID" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="NationalID" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="DateOfBirth" class="u-label">تاريخ الميلاد</label>
+                        <input type="date" placeholder="MM/DD/YYYY" asp-for="DateOfBirth" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="Gender" class="u-label">الجنس</label>
+                        <select asp-for="Gender" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+				<option value="ذكر">ذكر</option><option value="أنثى">أنثى</option>
+				</select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="Region" class="u-label">المنطقة</label>
+                <select asp-for="Region" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+				<option value="الرياض">الرياض</option><option value="مكـة المكرمة">مكـة المكرمة</option><option value="المدينة المنورة">المدينة المنورة</option><option value="القصيم">القصيم</option><option value="المنطقة الشرقية">المنطقة الشرقية</option><option value="عسير">عسير</option><option value="تبــوك">تبــوك</option><option value="حائل">حائل</option><option value="الحدود الشمالية">الحدود الشمالية</option><option value="جازان">جازان</option><option value="نجران">نجران</option><option value="الباحة">الباحة</option><option value="الجـوف">الجـوف</option>
+				</select>
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="City" class="u-label">مدينة الإقامة</label>
+                        <input asp-for="City" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="Degree" class="u-label">المؤهل العلمي</label>
+                        <select asp-for="Degree" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+				<option value="بكالوريس">بكالوريس</option><option value="ماجستير">ماجستير</option>
+				</select>
+                <span asp-validation-for="Degree" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="Major" class="u-label">التخصص</label>
+                        <input asp-for="Major" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="Major" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="GPAScale" class="u-label">نوع المعدل</label>
+                        <input asp-for="GPAScale" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="GPAScale" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="GPA" class="u-label">المعدل</label>
+                        <input asp-for="GPA" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="GPA" class="text-danger"></span>
+            </div>
+			<div class="u-form-group u-form-name u-label-top">
+                <label asp-for="University" class="u-label">الجامعة</label>
+                        <input asp-for="University" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="University" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="GraduationYear" class="u-label">سنة التخرج</label>
+                <input type="date" placeholder="YYYY" asp-for="GraduationYear" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="GraduationYear" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="EmployeeStatus" class="u-label">الحالة الوظيفية</label>
+                <select asp-for="EmployeeStatus" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+				<option value="موظف">موظف</option><option value="غير موظف">غير موظف</option>
+			    </select>
+                <span asp-validation-for="EmployeeStatus" class="text-danger"></span>
+            </div>
+			<div class="u-form-group u-form-name u-label-top">
+                <label asp-for="ExpYears" class="u-label">سنوات الخبرة</label>
+                        <input asp-for="ExpYears" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="ExpYears" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="EnglishLevel" class="u-label">مستوى اللغة الإنجليزية</label>
+                <select asp-for="EnglishLevel" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+				<option value="متوسط">متوسط</option><option value="متقدم">متقدم</option>
+				</select>
+                <span asp-validation-for="EnglishLevel" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="RegistrationReason" class="u-label">سبب التقديم على المبادرة</label>
+                        <input asp-for="RegistrationReason" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+                <span asp-validation-for="RegistrationReason" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="FreementStaus" class="u-label">هل أنت متفرغ لمدة 6 أشهر من التدريب المهني</label>
+                        <select asp-for="FreementStaus" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+			    <option value="نعم">نعم</option><option value="لا">لا</option>	
+				</select>
+                <span asp-validation-for="FreementStaus" class="text-danger"></span>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="Track" class="u-label">المعسكر التدريبي</label>
+				<select asp-for="Track" class="u-border-1 u-border-grey-30 u-input u-input-rectangle"  >
+			    <option value="1">معسكر الإعلانات الرقمية</option>
+			    <option value="2">معسكر الألعاب الإلكترونية</option>
+				<option value="3">معسكر الفيديو الرقمي</option>
+				<option value="4">معسكر الصوتيات الرقمية</option>
+				</select>
+                <span asp-validation-for="Track" class="text-danger"></span>
+            </div>
+
+                <input asp-for="Status" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" value="تسجيل جديد" style="display: none;">
+
+
+            @*----------------------------------------------------------*@
+
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="Certificate" class="u-label">إرفاق الشهادة</label>
+                 <input  onchange="Filevalidation(this.id)" id="Certificate" asp-for="Certificate" class="dropify u-border-1 u-border-grey-30 u-input u-input-rectangle" accept="application/pdf, image/*"  >
+                <span asp-validation-for="Certificate" class="text-danger"></span>
+                <p id="sizeCertificate"></p>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="CV" class="u-label">إرفاق السيرة الذاتية</label>
+                <input onchange="Filevalidation(this.id)" id="CV" asp-for="CV" class="dropify u-border-1 u-border-grey-30 u-input u-input-rectangle" accept="application/pdf, image/*"  >
+                <span asp-validation-for="CV" class="text-danger"></span>
+                <p id="sizeCV"></p>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="IntroVideo" class="u-label">إرفاق فيديو تعريفي</label>
+       	<span style=" font-size: 12; color: #6483d9; ">الحد الأعلى للفيديو 4 ميقا الصيغة المقبولة mp4</span>
+                        <input onchange="Filevalidation(this.id)" id="IntroVideo" asp-for="IntroVideo" class="dropify u-border-1 u-border-grey-30 u-input u-input-rectangle" accept="video/*"  >
+                <span asp-validation-for="IntroVideo" class="text-danger"></span>
+                <p id="sizeIntroVideo"></p>
+            </div>
+            <div class="u-form-group u-form-name u-label-top">
+                <label asp-for="PreviosWork" class="u-label">مشاريع سابقة تم العمل عليها</label>
+                <input onchange="Filevalidation(this.id)" id="PreviosWork" asp-for="PreviosWork" class="dropify u-border-1 u-border-grey-30 u-input u-input-rectangle" multiple accept="application/pdf, image/*"  >
+                <span asp-validation-for="PreviosWork" class="text-danger"></span>
+                <p id="sizePreviosWork"></p>
+            </div>
+                    <div class="u-form-agree u-form-group u-form-group-4">
+                        <input type="checkbox" id="agree-1dee" name="agree" class="u-agree-checkbox" required="">
+                        <label for="agree-1dee" class="u-agree-label u-label" style=" color: #1744d3; margin-right: 10px; ">أقر بصحة البيانات المسجلة وأتحمل المسؤولية القانوينة في حال خلاف ذلك </label>              </label>
+                    </div>
+
+            <h1>@ViewBag.data</h1>
+            <div class="u-form-group u-form-name u-label-top">
+                <input type="submit" value="إرسال" class="u-btn u-btn-submit u-button-style" />
+            </div>
+        </form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+    <script>
+        Filevalidation = (id) => {
+            const fi = document.getElementById(id);
+            // Check if any file is selected.
+            if (fi.files.length > 0) {
+                for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                    const fsize = fi.files.item(i).size;
+                    const file = Math.round((fsize / 1024));
+                    // The size of the file.
+                    if (file >= 4096) {
+                        alert(
+                          "يجب أن يتجاوز حجم الملف 4 ميقا");
+                          fi.value = "";
+                    } else {
+                        document.getElementById('size' + id).innerHTML = '<b>'
+                        + file + '</b> KB';
+                    }
+                }
+            }
+        }
+         $(document).ready(function($) {
+            $('.dropify').dropify();
+        }); 
+        
+    </script>
+
+        </div>
+      </div>
+    </section>
+ <style>
+ .u-section-1 {
+    background-image: url(/../images/Back.webp);
+    background-position: 50% 50%;
+}
+            .u-border-grey-30, .u-separator-grey-30:after {
+                border-color: #dbdbdb;
+                border-radius: 9px;
+                margin-bottom: 10px;
+                margin-top: 5px;
+            }
+</style> 
+  
+
+    <footer class="u-align-center u-clearfix u-footer u-palette-1-base u-footer" id="sec-f"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+
+        <p class="u-small-text u-text u-text-variant u-text-1"> جميع الحقوق محفوظة@2022</p>
+      </div></footer>
+  
+</body></html>

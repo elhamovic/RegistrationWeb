@@ -1,0 +1,58 @@
+@model RegistrationWeb.Models.UserModel
+
+<html style="font-size: 16px;" lang="ar-SA" dir="rtl"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="تسجيل">
+    <meta name="description" content="">
+    <title>login</title>
+    <link rel="stylesheet" href="../dist/css/style.css" media="screen">
+    <link rel="stylesheet" href="../dist/css/login.css" media="screen">
+    <script  type="text/javascript" src="../dist/js/jquery.js" defer=""></script>
+    <script  type="text/javascript" src="../dist/js/style.js" defer=""></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+    <meta name="theme-color" content="#0f1463">
+    <meta property="og:title" content="login">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+</head>
+<body class="u-body u-palette-1-base u-stick-footer u-xl-mode" data-lang="ar">
+    <section class="u-align-center u-clearfix u-gradient u-section-1" id="carousel_db5e">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <img class="u-image u-image-contain u-image-default u-image-1" src="../images/logo-e.webp" alt="" data-image-width="1588" data-image-height="264">
+        <div class="u-align-center u-container-style u-group u-radius-30 u-shape-round u-white u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <h4 class="u-text u-text-1">تسجيل الدخول</h4>
+            <div class="u-expanded-width u-form u-white u-form-1">
+              <form asp-action="LoginDB" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" source="email" name="form" style="padding: 0px;">
+                <div class="u-form-group u-form-name">
+                  <label asp-for="Username" class="u-label">اسم المستخدم</label>
+                  <input asp-for="Username" type="text" placeholder="اسم المستخدم" id="Username" name="Username" class="u-border-2 u-border-palette-4-light-3 u-input u-input-rectangle u-palette-4-light-3 u-radius-10">
+                  <span asp-validation-for="Username" class="text-danger"></span> 
+			 </div>
+                <div class="u-form-email u-form-group">
+                  <label asp-for="Password" class="u-label">كلمة المرور</label>
+                  <input asp-for="Password" placeholder="كلمة المرور" id="Password" name="Password" type="password" class="u-border-2 u-border-palette-4-light-3 u-input u-input-rectangle u-palette-4-light-3 u-radius-10">
+                  <span asp-validation-for="Password" class="text-danger"></span>
+			   </div>
+                <div class="u-align-right u-form-group u-form-submit">
+                <input type="submit" value="تسجيل الدخول" class="u-active-palette-1-base u-border-5 u-border-active-palette-1-dark-1 u-border-hover-palette-1-light-1 u-border-palette-1-base u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-10 u-btn-1" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}  
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-palette-1-base u-footer" id="sec-f"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1"> جميع الحقوق محفوظة@2022</p>
+      </div></footer>
+  
+</body></html>

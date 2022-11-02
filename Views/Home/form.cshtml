@@ -1,0 +1,348 @@
+@model RegistrationWeb.Models.TraineeModel
+
+@{
+    Layout = null;
+}
+
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>لوحة التحكم</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/adminlte.css">
+    <!-- Bootstrap 4 RTL -->
+  <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+  <!-- Custom style for RTL -->
+  <link rel="stylesheet" href="../dist/css/custom.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+   
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a class="brand-link">
+      <img src="logo.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">لوحة التحكم</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+
+
+
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="InfoDashboard" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    بيانات المتدربين
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="ReportsDashboard" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    التقييمات
+                                </p>
+                            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+           
+
+
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">بيانات المتدريب</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+			  <div class="row">
+
+				<div class="form-group col-3">
+                <label asp-for="FirstName" >الاسم الأول</label>
+                <input disable asp-for="FirstName" class="form-control form-control-border">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="LastName" >الاسم الأخير</label>
+                <input disable asp-for="LastName" class="form-control form-control-border">
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="Email" >البريد الإلكتروني</label>
+                <input disable asp-for="Email" class="form-control form-control-border">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="PhoneNumber" >الجوال</label>
+                <input disable asp-for="PhoneNumber" class="form-control form-control-border">
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="Nationality" >الجنسية</label>
+                <select disable asp-for="Nationality" class="form-control form-control-border">
+				<option value="السعودية">السعودية</option><option value="الكويت">الكويت</option><option value="البحرين">البحرين</option><option value="الإمارات العربية">الإمارات العربية</option><option value="سلطنة عمان">سلطنة عمان</option><option value="قطر">قطر</option><option value="العراق">العراق</option><option value="سوريا">سوريا</option><option value="لبنان">لبنان</option><option value="الأردن">الأردن</option><option value="اليمن">اليمن</option><option value="فلسطين">فلسطين</option><option value="الجزائر">الجزائر</option><option value="موريتانيا">موريتانيا</option><option value="مصر">مصر</option><option value="المغرب">المغرب</option><option value="السودان">السودان</option><option value="تونس">تونس</option><option value="ليبيا">ليبيا</option><option value="الصومال">الصومال</option><option value="جيبوتي">جيبوتي</option><option value="جزر القمر">جزر القمر</option><option value="أفغانستان">أفغانستان</option><option value="تركيا">تركيا</option><option value="إيران">إيران</option><option value="ماليزيا">ماليزيا</option><option value="اليابان">اليابان</option><option value="أندونيسيا">أندونيسيا</option><option value="الفلبين">الفلبين</option><option value="باكستان">باكستان</option><option value="الهند">الهند</option><option value="الصين الوطنية">الصين الوطنية</option><option value="كوريا الجنوبية">كوريا الجنوبية</option><option value="سنغافورا">سنغافورا</option><option value="بنجلاديش">بنجلاديش</option><option value="هونج كونج">هونج كونج</option><option value="تايلاند">تايلاند</option><option value="سيرلنكا (سيلان)">سيرلنكا (سيلان)</option><option value="بريطانيا">بريطانيا</option><option value="فرنسا">فرنسا</option><option value="هولندا">هولندا</option><option value="بلجيكا">بلجيكا</option><option value="إيطاليا">إيطاليا</option><option value="السويد">السويد</option><option value="النرويج">النرويج</option><option value="سويسرا">سويسرا</option><option value="النمسا">النمسا</option><option value="المانيا">المانيا</option><option value="إسبانيا">إسبانيا</option><option value="الدنمارك">الدنمارك</option><option value="اليونان">اليونان</option><option value="قبرص">قبرص</option><option value="فنلندا">فنلندا</option><option value="إثوبيا">إثوبيا</option><option value="مالي">مالي</option><option value="نيجيريا">نيجيريا</option><option value="جنوب أفريقيا">جنوب أفريقيا</option><option value="تشاد">تشاد</option><option value="جنسيات أفريقية أخرى">جنسيات أفريقية أخرى</option><option value="المجموع">المجموع</option><option value="الولايات المتحدة">الولايات المتحدة</option><option value="كندا">كندا</option><option value="استرليا">استرليا</option>
+				</select>
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="NationalID" >رقم الهوية</label>
+                <input disable asp-for="NationalID" class="form-control form-control-border">
+                <span asp-validation-for="NationalID" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="DateOfBirth" >تاريخ الميلاد</label>
+                <input disable type="date" placeholder="MM/DD/YYYY" asp-for="DateOfBirth" class="form-control form-control-border">
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="Gender" >الجنس</label>
+                <select disable asp-for="Gender" class="form-control form-control-border">
+				<option value="ذكر">ذكر</option><option value="أنثى">أنثى</option>
+				</select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="Region" >المنطقة</label>
+                <select disable asp-for="Region" class="form-control form-control-border">
+				<option value="الرياض">الرياض</option><option value="مكـة المكرمة">مكـة المكرمة</option><option value="المدينة المنورة">المدينة المنورة</option><option value="القصيم">القصيم</option><option value="المنطقة الشرقية">المنطقة الشرقية</option><option value="عسير">عسير</option><option value="تبــوك">تبــوك</option><option value="حائل">حائل</option><option value="الحدود الشمالية">الحدود الشمالية</option><option value="جازان">جازان</option><option value="نجران">نجران</option><option value="الباحة">الباحة</option><option value="الجـوف">الجـوف</option>
+				</select>
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="City" >مدينة الإقامة</label>
+                <input disable disable asp-for="City" class="form-control form-control-border">
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="Degree" >المؤهل العلمي</label>
+                <select disable asp-for="Degree" class="form-control form-control-border">
+				<option value="بكالوريس">بكالوريس</option><option value="ماجستير">ماجستير</option>
+				</select>
+                <span asp-validation-for="Degree" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="Major" >التخصص</label>
+                <input disable asp-for="Major" class="form-control form-control-border">
+                <span asp-validation-for="Major" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="GPAScale" >نوع المعدل</label>
+                <input disable asp-for="GPAScale" class="form-control form-control-border">
+                <span asp-validation-for="GPAScale" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="GPA" >المعدل</label>
+                <input disable asp-for="GPA" class="form-control form-control-border">
+                <span asp-validation-for="GPA" class="text-danger"></span>
+            </div>
+			<div class="form-group col-3">
+                <label asp-for="University" >الجامعة</label>
+                <input disable asp-for="University" class="form-control form-control-border">
+                <span asp-validation-for="University" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="GraduationYear" >سنة التخرج</label>
+                <input disable type="date" placeholder="YYYY" asp-for="GraduationYear" class="form-control form-control-border">
+                <span asp-validation-for="GraduationYear" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="EmployeeStatus" >الحالة الوظيفية</label>
+                <select  disable asp-for="EmployeeStatus" class="form-control form-control-border">
+				<option value="موظف">موظف</option><option value="غير موظف">غير موظف</option>
+			    </select>
+                <span asp-validation-for="EmployeeStatus" class="text-danger"></span>
+            </div>
+			<div class="form-group col-3">
+                <label asp-for="ExpYears" >سنوات الخبرة</label>
+                <input disable asp-for="ExpYears" class="form-control form-control-border">
+                <span asp-validation-for="ExpYears" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="EnglishLevel" >مستوى اللغة الإنجليزية</label>
+                <select disable asp-for="EnglishLevel" class="form-control form-control-border">
+				<option value="متوسط">متوسط</option><option value="متقدم">متقدم</option>
+				</select>
+                <span asp-validation-for="EnglishLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="RegistrationReason" >سبب التقديم على المبادرة</label>
+                <input disable asp-for="RegistrationReason" class="form-control form-control-border">
+                <span asp-validation-for="RegistrationReason" class="text-danger"></span>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="FreementStaus" >متفرغ</label>
+                <select disable asp-for="FreementStaus" class="form-control form-control-border">
+			    <option value="نعم">نعم</option><option value="لا">لا</option>	
+				</select>
+                <span asp-validation-for="FreementStaus" class="text-danger"></span>
+            </div>
+                <input disable asp-for="Status" class="form-control form-control-border" value="New" style="display: none;">
+
+
+
+            <div class="form-group col-3">
+                <label asp-for="Certificate" >إرفاق الشهادة</label>
+                <input disable onchange="Filevalidation(this.id)" id="Certificate" asp-for="Certificate" class="form-control form-control-border" accept="application/pdf, image/*">
+                <span asp-validation-for="Certificate" class="text-danger"></span>
+                <p id="sizeCertificate"></p>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="CV" >السيرة الذاتية</label>
+                <input disable onchange="Filevalidation(this.id)" id="CV" asp-for="CV" class="form-control form-control-border" accept="application/pdf, image/*">
+                <span asp-validation-for="CV" class="text-danger"></span>
+                <p id="sizeCV"></p>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="IntroVideo" >فيديو تعريفي</label>
+                <input disable onchange="Filevalidation(this.id)" id="IntroVideo" asp-for="IntroVideo" class="form-control form-control-border" accept="video/*">
+                <span asp-validation-for="IntroVideo" class="text-danger"></span>
+                <p id="sizeIntroVideo"></p>
+            </div>
+            <div class="form-group col-3">
+                <label asp-for="PreviosWork" >مشاريع سابقة</label>
+                <input disable onchange="Filevalidation(this.id)" id="PreviosWork" asp-for="PreviosWork" class="form-control form-control-border" multiple accept="application/pdf, image/*">
+                <span asp-validation-for="PreviosWork" class="text-danger"></span>
+                <p id="sizePreviosWork"></p>
+            </div>
+
+              
+			      </div> <div class="card-footer">
+				   <button type="submit" class="btn btn-primary">عودة</button>
+                  <button type="submit" class="btn btn-primary">حفظ</button>
+                </div>
+              </div>
+              <!-- /.card-body -->
+			  
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 1
+    </div>
+    <strong>Copyright &copy; 2022 <a href="">جميع الحقوق محفوظة</a>.</strong>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="./plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="./plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="./plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="./plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="./plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="./plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="./plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="./plugins/jszip/jszip.min.js"></script>
+<script src="./plugins/pdfmake/pdfmake.min.js"></script>
+<script src="./plugins/pdfmake/vfs_fonts.js"></script>
+<script src="./plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="./plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="./plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="./dist/js/adminlte.min.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["excel","print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+</body>
+</html>
+
+<style>
+
+.card-title {
+    float: right;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
+}
+code, kbd, pre, samp {
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    font-size: 1em;
+    direction: ltr;
+    unicode-bidi: embed;
+}
+</style>

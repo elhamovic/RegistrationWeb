@@ -1,0 +1,339 @@
+﻿@model RegistrationWeb.Models.ReportModel
+
+@{
+    if (@ViewData["note"] == "y")
+    {
+    <script>alert("This report has been submitied before, please choose newer month")</script>
+    }
+    string i = (string)@ViewData["students"];
+    string x = (string)@ViewData["reportcounts"];
+    string names = (string)@ViewData["names"];
+    Layout = null;
+}
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>لوحة التحكم</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.css">
+    <!-- Bootstrap 4 RTL -->
+    <link rel="stylesheet" href="../dist/css/bootstrap.min.css">
+    <!-- Custom style for RTL -->
+    <link rel="stylesheet" href="../dist/css/custom.css">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a class="brand-link">
+                <img src="logo.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">لوحة التحكم</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user (optional) -->
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                             with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="InfoDashboard" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    بيانات المتدربين
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="ReportsDashboard" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    التقييمات
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-10">
+                            <h1>إضافة تقييم جديد</h1>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+
+
+
+                            <!-- general form elements -->
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">نموذج تقييم</h3>
+                                </div>
+                                <form asp-action="AddReport" enctype="multipart/form-data">
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <div class="row">
+                                            @{
+                                                try
+                                                {
+                                                                        <div class="form-group col-4">
+                                                                            <label asp-for="TraineeID" for="exampleInputBorder">رقم المتدرب</label>
+                                                                    <select asp-for="TraineeID" type="text" class="form-control form-control-border" id="idselect">
+                                                                                <span asp-validation-for="TraineeID" class="text-danger"></span>
+
+                                                                 <option  value="">حدد الطلب</option>
+
+                                                                                @if(i != null){
+
+                                                                                @if (!i.Equals("none"))
+                                                            {
+                                                                string ids = (string)@ViewData["students"];
+                                                                string[] id = ids.Trim().Split(',');
+                                                                id = id.SkipLast(1).ToArray();
+                                                                    string[] allnames = names.Split(',');
+                                                                    allnames = allnames.SkipLast(1).ToArray();
+
+                                                                    string[] reportcounts = @x.Trim().Split(',').SkipLast(1).ToArray();
+                                                                    int index = 0;
+                                                                    foreach (string s in id)
+                                                                {
+                                                                    if (reportcounts[index] != "6") {
+                                                                            <option data-count="@reportcounts[index]" value=@s>    @s - @allnames[index]   </option>
+                                                                  
+                                                                    }
+                                                                        index++;
+                                                                }
+                                                                }
+                                                                }
+
+                                                                            </select>
+                                                                            <span asp-validation-for="ReportNo" class="text-danger"></span>
+                                                                        </div>
+                                                        <div class="form-group col-4">
+                                                            <label for="exampleInputBorder">فترة التقييم</label>
+                                                            <select asp-for="ReportNo" type="text" class="form-control form-control-border" id="Period">
+                                                                <option value="1">الشهر الأول</option>
+                                                                <option value="2">الشهر الثاني</option>
+                                                                <option value="3">الشهر الثالث</option>
+                                                                <option value="4">الشهر الرابع</option>
+                                                                <option value="5">الشهر الخامس</option>
+                                                                <option value="6">الشهر السادس</option>
+                                                            </select>
+                                                            <span asp-validation-for="ReportNo" class="text-danger"></span>
+                                                        </div>
+                                                }
+
+                                                catch (Exception e)
+                                                {
+
+                                                }
+                                            }
+                                                @*<input type="text" value="@Model.LastName" disabled style="display: none;">
+                                            <input type="text"  value="@Model.Track" disabled style="display: none;">
+                                            <input type="text" value="@Model.TraineeID" disabled style="display: none;">*@
+                                                <div class="form-group col-4">
+                                                    <label asp-for="DailyAttendance" for="exampleInputBorder">الحضور اليومي   <code>7.5</code></label>
+                                                    <input asp-for="DailyAttendance" type="number" class="form-control form-control-border" value="1" min="0" step="0.1" max="7.5">
+                                                    <span asp-validation-for="DailyAttendance" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="form-group col-4">
+                                                    <label asp-for="LateOrExit" for="exampleInputBorder">عدم التأخير أو الخروج    <code>7.5</code></label>
+                                                    <input asp-for="LateOrExit" type="number" class="form-control form-control-border" value="1" min="0" step="0.1" max="7.5">
+                                                    <span asp-validation-for="LateOrExit" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="form-group col-4">
+                                                    <label asp-for="BreakTime" for="exampleInputBorder">بالإلترزام بأوقات الراحة    <code>7.5</code></label>
+                                                    <input asp-for="BreakTime" type="number" class="form-control form-control-border" value="1" min="0" step="0.1" max="7.5">
+                                                    <span asp-validation-for="BreakTime" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group col-4">
+                                                    <label asp-for="Development" for="exampleInputBorder">تطوير مهارات المتدرب   <code>5</code></label>
+                                                    <input asp-for="Development" type="number" class="form-control form-control-border" value="1" min="0" step="0.1" max="5">
+                                                    <span asp-validation-for="Development" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group col-4">
+                                                    <label asp-for="TaskOnTime" for="exampleInputBorder">إتمام المهام في الوقت المحدد   <code>9.5</code></label>
+                                                    <input asp-for="TaskOnTime" type="number" class="form-control form-control-border" value="1" min="0" step="0.1" max="9.5">
+                                                    <span asp-validation-for="TaskOnTime" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group col-4">
+                                                    <label asp-for="Excitement" for="exampleInputBorder">الرغبة والحماس في تنفيذ المهام    <code>8.5</code></label>
+                                                    <input asp-for="Excitement" type="number" class="form-control form-control-border" value="1" min="0" step="0.1" max="8.5">
+                                                    <span asp-validation-for="Excitement" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group col-4">
+                                                    <label asp-for="TaskAchievement" for="exampleInputBorder">تنفيذ المهام بغض النظر عن الجودة   <code>3.5</code></label>
+                                                    <input asp-for="TaskAchievement" type="number" class="form-control form-control-border" value="1" min="0" step="0.1" max="3.5">
+                                                    <span asp-validation-for="TaskAchievement" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group col-4">
+                                                    <label asp-for="TeamWork" for="exampleInputBorder">التعاون مع فريق العمل    <code>0.5</code></label>
+                                                    <input asp-for="TeamWork" type="number" class="form-control form-control-border" value="0.5" min="0" step="0.1" max="0.5">
+                                                    <span asp-validation-for="TeamWork" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group col-4">
+                                                    <label asp-for="ImprovementSuggestions" for="exampleInputBorder">تقديم مقترحات لتحسين العمل    <code>1</code></label>
+                                                    <input asp-for="ImprovementSuggestions" type="number" class="form-control form-control-border" value="1" min="0" step="0.1" max="1">
+                                                    <span asp-validation-for="ImprovementSuggestions" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group col-4">
+                                                    <label asp-for="Passion" for="exampleInputBorder">الشغف المستمر في التعلم    <code>9.5</code></label>
+                                                    <input asp-for="Passion" type="number" class="form-control form-control-border" value="1" min="0" step="0.1" max="9.5">
+                                                    <span asp-validation-for="Passion" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group col-4">
+                                                    <label asp-for="Precision" for="exampleInputBorder">الدقة الوتركيز في  أداء المهام   <code>8.5</code></label>
+                                                    <input asp-for="Precision" type="number" class="form-control form-control-border" value="1" min="0" step="0.1" max="8.5">
+                                                    <span asp-validation-for="Precision" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group col-4">
+                                                    <label asp-for="WorkApproved" for="exampleInputBorder">اعتماد أكثر من ثلاثة أعمال    <code>5</code></label>
+                                                    <input asp-for="WorkApproved" type="number" class="form-control form-control-border" value="1" min="0" step="0.1" max="5">
+                                                    <span asp-validation-for="WorkApproved" class="text-danger"></span>
+                                                </div>
+
+                                            </div> <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary">تقييم</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </form>
+                                </div>
+                                <!-- /.card -->
+
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div class="float-right d-none d-sm-block">
+                    <b>Version</b> 1
+                </div>
+                <strong>Copyright &copy; 2022 <a href="">جميع الحقوق محفوظة</a>.</strong>
+            </footer>
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+        </div>
+        <!-- ./wrapper -->
+        <!-- jQuery -->
+        <script src="../plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- DataTables  & Plugins -->
+        <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+        <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+        <script src="../plugins/jszip/jszip.min.js"></script>
+        <script src="../plugins/pdfmake/pdfmake.min.js"></script>
+        <script src="../plugins/pdfmake/vfs_fonts.js"></script>
+        <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+        <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+        <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../dist/js/adminlte.min.js"></script>
+        <!-- Page specific script -->
+        <script>
+        $(document).ready(function () {          
+      $('#idselect').change(function(){
+        var RatingTimes = $(this).children('option:selected').data('count');
+        var Result = RatingTimes + 1 ;
+       $('#Period option[value !=""]').removeAttr('selected');     
+       $('#Period option[value!='+Result+']').attr('disabled', true); 
+       $('#Period option[value='+Result+']').removeAttr('disabled');
+       $('#Period option[value='+Result+']').attr('selected', true);   
+    });
+    });
+            $(function () {
+                $("#example1").DataTable({
+                    "responsive": true, "lengthChange": false, "autoWidth": false,
+                    "buttons": ["excel", "print", "colvis"]
+                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false,
+                    "responsive": true,
+                });
+            });
+        </script>
+    </body>
+    </html>
+
+    <style>
+
+        .card-title {
+            float: right;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        code, kbd, pre, samp {
+            font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+            font-size: 1em;
+            direction: ltr;
+            unicode-bidi: embed;
+        }
+    </style>
